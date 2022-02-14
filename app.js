@@ -67,10 +67,10 @@ wbApp.countryList = function() {
             });
               
             // grab button
-            const compare = document.querySelector('button');
+            const compare = document.querySelector('input[type="submit"]');
               
-            compare.addEventListener('click', function() {
-             
+            compare.addEventListener('click', function(event) {
+                event.preventDefault();
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
                     alert("Please select two countries to compare");
                 } else {
