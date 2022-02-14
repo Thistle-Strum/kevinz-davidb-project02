@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Our World in Data</title>
+</head>
+<body id="background">
+    <div class="wrapper">
+        <header>
+            <h1>Our World in Data</h1>
+        </header>
+            <nav>
+                <label class="selectorLabel" for="">Compare two countries:</label>
+                <ul class="countrySelectors">
+    
+                    <li>
+                        <select id="countryA" name="countryA" class="countries" >
+                            <option value="">Select a country</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select  id="countryB" name="countryB" class="countries" >
+                            <option value="">Select a country</option>
+                        </select>
+                    </li>
+                    
+                </ul>
+                <button>Compare</button>
+            </nav>
+        <main>
+            <section class="results">
+                    <div class="resultsA">
+                        <div class="countryName"></div>
+                        <ul class="indicatorData"></ul>
+                    </div>
+                    <div class="resultsB">
+                        <div class="countryName"></div>
+                        <ul class="indicatorData"></ul>
+                    </div>   
+            </section>
+            </div>
+        </main>   
+    </div>
+
+<script src="app.js"></script>
+</body>
+</html>
