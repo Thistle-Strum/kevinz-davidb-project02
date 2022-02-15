@@ -34,11 +34,14 @@ wbApp.countryList = function() {
         })
         .then(function(jsonResult) { 
             // create a global variable
-            wbApp.countries = jsonResult[1];
-      
+            //wbApp.countries = jsonResult[1];
+            wbApp.countries = jsonResult[1].filter( (countryObject)=> {
+                return countryObject.region.value != "Aggregates";
+            });
+            console.log(wbApp.countries);
             // populate selectors with names of countries
             const selector = document.querySelectorAll('select'); 
-            for (let i=0;i < jsonResult[1].length; i++) {
+            for (let i=0;i < wbApp.countries.length; i++) {
                 wbApp.createSelectOption(selector[0], i);
                 wbApp.createSelectOption(selector[1], i);
             }
@@ -46,10 +49,10 @@ wbApp.countryList = function() {
             selector[0].addEventListener('change', function() {
                 // create global variable with user's chosen countries
                 wbApp.selectedCountryNames[0] = selector[0].value 
-                for (let i=0;i < jsonResult[1].length; i++) {    
-                    if (jsonResult[1][i].name === selector[0].value) {
+                for (let i=0;i < wbApp.countries.length; i++) {    
+                    if (wbApp.countries[i].name === selector[0].value) {
                         // create global variable with user's chosen country codes
-                        wbApp.selectedCountries[0] = jsonResult[1][i].id;
+                        wbApp.selectedCountries[0] = wbApp.countries[i].id;
                         // console.log(wbApp.selectedCountries);
                         // console.log(wbApp.selectedCountryNames)              
                     }
@@ -57,9 +60,9 @@ wbApp.countryList = function() {
             });
             selector[1].addEventListener('change', function() {
                 wbApp.selectedCountryNames[1] = selector[1].value 
-                for (let i=0;i < jsonResult[1].length; i++) {
-                    if (jsonResult[1][i].name === selector[1].value) {
-                        wbApp.selectedCountries[1] = jsonResult[1][i].id; 
+                for (let i=0;i < wbApp.countries.length; i++) {
+                    if (wbApp.countries[i].name === selector[1].value) {
+                        wbApp.selectedCountries[1] = wbApp.countries[i].id; 
                         // console.log(wbApp.selectedCountries); 
                         // console.log(wbApp.selectedCountryNames)   
                     }                     
@@ -151,6 +154,7 @@ wbApp.callWorldBankApi = function(countries, indicators) {
         })
         .then( function(jsonResponse) {
             //create an object that holds the values we want as properties and return it
+            console.log(jsonResponse);
             const processedData = wbApp.getIndicatorValues(jsonResponse, countries, wbApp.currentYear);
             console.log(processedData);
             //display the processed data using a function
@@ -199,6 +203,7 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
             indicatorValues[1].push(indicatorObject);
         }
     });
+
     return indicatorValues;
 };
 
@@ -219,7 +224,7 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
 
 wbApp.init = function() {
     wbApp.countryList();
-    wbApp.modals()
+    //wbApp.modals()
 };
 
 wbApp.init();
