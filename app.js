@@ -3,7 +3,7 @@ const wbApp = {};
 // global variables established at initialization
 
 //base url for the api call
-wbApp.baseUrl = 'http://api.worldbank.org/v2/country';
+wbApp.baseUrl = 'https://api.worldbank.org/v2/country';
 
 //variable for the lastet year to get data from - currently hardcoded for 2020
 wbApp.currentYear = "2020";
@@ -114,10 +114,11 @@ wbApp.displayData = function(dataArray) {
 //    console.log(dataArray[0][4].value.toFixed(3))
 
     const country1flag = document.querySelector('.indicatorData');
-    const flagUrl = new URL(`https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`)
-    console.log(flagUrl)
-    country1flag.style.backgroundImage = flagUrl;
-   
+    // const flagUrl = (`https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`)
+    // console.log(flagUrl)
+    // 
+    country1flag.style.backgroundImage = `url(https://countryflagsapi.com/png/${wbApp.selectedCountries[0]})`
+    
     // create a <p> to display country name in
     const resultAParagraphEl = document.createElement('p')
     // add first country to <p>
