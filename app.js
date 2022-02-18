@@ -99,7 +99,7 @@ wbApp.displayData = function(dataArray) {
     // console.log(dataArray);
     // console.log(wbApp.selectedCountryNames)
 
-    const ulElement = document.querySelector('.resultsA .countryName');
+    // const ulElement = document.querySelector('.resultsA .countryName');
     
     // get div containing the class .countryName
     const resultsACountryName = document.querySelector('.resultsA .countryName');
@@ -114,27 +114,46 @@ wbApp.displayData = function(dataArray) {
     const country1Name = wbApp.selectedCountryNames[0];
     // get first nested array from api call
     const country1Results = dataArray[0];
-   console.log(dataArray[0])
+//    console.log(dataArray[0][4].value.toFixed(3))
 
+    resultAParagraphEl.style.backgroundImage = `url('https://countryflagsapi.com/svg/bra{wbApp.selectedCountries[0]}')`
    
     // create a <p> to display country name in
-    const ResultAParagraphEl = document.createElement('p')
+    const resultAParagraphEl = document.createElement('p')
     // add first country to <p>
-    ResultAParagraphEl.textContent = `${country1Name}`;
+   
+    resultAParagraphEl.textContent = `${country1Name}`;
+    // using inline styling to add padding
+    resultAParagraphEl.style.padding = '25px 0'
+    
+    console.log(resultAParagraphEl)
     // append <p> to the element with a class of .resultsA
-    resultsACountryName.appendChild(ResultAParagraphEl)
+    resultsACountryName.appendChild(resultAParagraphEl)
 
     // loop through data array result and display all property keys and values 
     country1Results.forEach(function(result) { 
         // create a <p> to display country name in 
-        const indicators = document.createElement('li');  
+        const indicator1 = document.createElement('li');  
         const values1 = document.createElement('li');
-        // use a template literal to display property names and values separated by a colon
-        indicators.textContent = `${result.name}`
-        values1.textContent = `${result.value}`
+        // new variable to hold reformatted values
+        let newRes = '';
+
+         // use a template literal to display property names and values separated by a colon        
+        indicator1.textContent = `${result.name}`;
+
+        // conditional used to reduce size of float values
+        if (result.value % 1 == 0 || typeof result.value == 'string') {
+            newRes = result.value
+            } else {
+            newRes = result.value.toFixed(2)
+            }
+
+        values1.textContent = newRes
+        
+        // values1.textContent = `${result.value}`
         // listEl.textContent = `${result.name}: ${result.value}`
         // append content to the <ul> with a class of .indicatorData as a <li> item
-        resultsA.appendChild(indicators);
+        resultsA.appendChild(indicator1);
         resultsA.appendChild(values1);
     });
 
@@ -151,16 +170,27 @@ wbApp.displayData = function(dataArray) {
     resultsBCountryName.innerHTML = ''; 
     resultsB.innerHTML = ''; 
 
-    const ResultBParagraphEl = document.createElement('p')
-    ResultBParagraphEl.textContent = `${country2Name}`;
-    resultsBCountryName.appendChild(ResultBParagraphEl)
+    const resultBParagraphEl = document.createElement('p')
+    resultBParagraphEl.textContent = `${country2Name}`;
+    resultBParagraphEl.style.padding = '25px 0'
+    resultsBCountryName.appendChild(resultBParagraphEl)
 
     country2Results.forEach(function(result) {   
         const indicator2 = document.createElement('li');  
         const values2 = document.createElement('li');
-        
+        let newRes = '';
+    
+            if (result.value % 1 == 0 || typeof result.value == 'string') {
+                    newRes = result.value
+                    } else {
+                    newRes = result.value.toFixed(2)
+                    }
+       
         indicator2.textContent = `${result.name}`
-        values2.textContent = `${result.value}`
+        values2.textContent = newRes
+      
+
+  
         // listEl.textContent = `${result.name}: ${result.value}`
         resultsB.appendChild(indicator2);
         resultsB.appendChild(values2);
