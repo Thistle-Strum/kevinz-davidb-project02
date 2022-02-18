@@ -97,41 +97,50 @@ wbApp.createSelectOption = function(dropdownList, countryIndex)  {
 
 wbApp.displayData = function(dataArray) {
     
-
     // get div containing the class .countryName
     const resultsACountryName = document.querySelector('.resultsA .countryName');
     // get div containing the class .indicatorData
     const resultsA = document.querySelector('.resultsA .indicatorData');
-
-     // clear previous results
+    const flag1 = document.querySelector('.flag1')
+  
+// **************************************************************************  
+    
+// clear previous results
      resultsACountryName.innerHTML = ''; 
      resultsA.innerHTML = ''; 
-
-    // get first country name from global variable
+     flag1.innerHTML= '';
+// ****************************************************************************************
+  
+// get first country name from global variable
     const country1Name = wbApp.selectedCountryNames[0];
     // get first nested array from api call
     const country1Results = dataArray[0];
-//    console.log(dataArray[0][4].value.toFixed(3))
+    const flag1Url = `https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`
+    // console.log(flag1Url)
 
-    const country1flag = document.querySelector('.indicatorData');
-    // const flagUrl = (`https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`)
-    // console.log(flagUrl)
-    // 
-    country1flag.style.backgroundImage = `url(https://countryflagsapi.com/png/${wbApp.selectedCountries[0]})`
-    
+// **************************************************************************************************
+   
+    const flag1Element = document.createElement('img');
+    flag1Element.src = flag1Url;
+    // console.log(flag1Element);
+    // country1Flag.style.backgroundImage = `url(https://countryflagsapi.com/png/${wbApp.selectedCountries[0]})`
+    flag1.appendChild(flag1Element);
+// **********************************************************************************************
     // create a <p> to display country name in
     const resultAParagraphEl = document.createElement('p')
     // add first country to <p>
-   
     resultAParagraphEl.textContent = `${country1Name}`;
     // using inline styling to add padding
     resultAParagraphEl.style.padding = '25px 0'
     
-    console.log(resultAParagraphEl)
+    // console.log(resultAParagraphEl)
     // append <p> to the element with a class of .resultsA
     resultsACountryName.appendChild(resultAParagraphEl)
+// **********************************************************************************************
+  
 
-    // loop through data array result and display all property keys and values 
+
+// loop through data array result and display all property keys and values 
     country1Results.forEach(function(result) { 
         // create a <p> to display country name in 
         const indicator1 = document.createElement('li');  
@@ -163,13 +172,30 @@ wbApp.displayData = function(dataArray) {
     const resultsBCountryName = document.querySelector('.resultsB .countryName');
     // get div containing the class .indicatorData
     const resultsB = document.querySelector('.resultsB .indicatorData');
-
-    const country2Name = wbApp.selectedCountryNames[1];
-    const country2Results = dataArray[1];
+    const flag2 = document.querySelector('.flag2')
+  
    
     // clear previous results
     resultsBCountryName.innerHTML = ''; 
     resultsB.innerHTML = ''; 
+    flag2.innerHTML= '';
+
+    const country2Name = wbApp.selectedCountryNames[1];
+    const country2Results = dataArray[1];
+
+    const flag2Url = `https://countryflagsapi.com/png/${wbApp.selectedCountries[1]}`
+    // console.log(flag2Url)
+  
+    
+// **************************************************************************************************
+   
+    const flag2Element = document.createElement('img');
+    flag2Element.src = flag2Url;
+ 
+    flag2.appendChild(flag2Element);
+
+
+
 
     const resultBParagraphEl = document.createElement('p')
     resultBParagraphEl.textContent = `${country2Name}`;
