@@ -6,19 +6,20 @@ label {
 ul {
     list-style: none;
 }
-select {
-    width: 250px;
-    margin: 10px 0 15px 0;
-}
-.countrySelectors {
+
+.selectCountries {
     display:flex;
     flex-direction: row;
-    justify-content: center;
-}
-
-
-
-button {
-    display: block;
-    margin: 0px auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 60%;
+    max-width: 600px;
+    margin: 0 auto;
+    select {
+        width: 45%;
+    }
+    input[type="submit"] {
+        padding: 5px 20px;
+        margin-top: 20px;
+    }
 }
