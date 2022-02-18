@@ -1,0 +1,24 @@
+
+label {
+    margin-left: 22%;
+}
+
+ul {
+    list-style: none;
+}
+select {
+    width: 250px;
+    margin: 10px 0 15px 0;
+}
+.countrySelectors {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+
+button {
+    display: block;
+    margin: 0px auto;
+}

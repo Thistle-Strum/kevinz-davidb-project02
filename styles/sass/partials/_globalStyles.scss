@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 125%;
+}
+
+.wrapper {
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    background: linear-gradient(360deg, green, purple);
+    transition: opacity 1000ms ease-out;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+

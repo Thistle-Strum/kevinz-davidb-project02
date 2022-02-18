@@ -27,7 +27,7 @@ wbApp.defaultIndicators = [
 
 wbApp.countryList = function() {
     // On initialization make a call to wb to populate selector option elements 
-    fetch('https://api.worldbank.org/v2/country?format=json&per_page=300')
+    fetch('https://api.worldbank.org/v2/country/all/?format=json&per_page=300')
         
         .then(function(response) {           
          return response.json();
@@ -223,7 +223,6 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
 
 wbApp.init = function() {
     wbApp.countryList();
-    //wbApp.modals()
 };
 
 wbApp.init();
