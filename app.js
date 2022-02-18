@@ -75,10 +75,11 @@ wbApp.countryList = function() {
               
             compare.addEventListener('click', function() {
               
-                
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
                     alert("Please select two countries to compare");
                 } else {
+                    const previousResults = document.querySelector('.resulsA .indicatorData');
+    //                       previousResults.innerHTML = " ";
                     wbApp.callWorldBankApi(wbApp.selectedCountries, wbApp.defaultIndicators);
                 }
             });
@@ -98,15 +99,23 @@ wbApp.displayData = function(dataArray) {
     // console.log(dataArray);
     // console.log(wbApp.selectedCountryNames)
 
+    const ulElement = document.querySelector('.resultsA .countryName');
+    
     // get div containing the class .countryName
     const resultsACountryName = document.querySelector('.resultsA .countryName');
     // get div containing the class .indicatorData
     const resultsA = document.querySelector('.resultsA .indicatorData');
 
+     // clear previous results
+     resultsACountryName.innerHTML = ''; 
+     resultsA.innerHTML = ''; 
+
     // get first country name from global variable
     const country1Name = wbApp.selectedCountryNames[0];
     // get first nested array from api call
     const country1Results = dataArray[0];
+   console.log(dataArray[0])
+
    
     // create a <p> to display country name in
     const ResultAParagraphEl = document.createElement('p')
@@ -117,12 +126,16 @@ wbApp.displayData = function(dataArray) {
 
     // loop through data array result and display all property keys and values 
     country1Results.forEach(function(result) { 
-        // create a <p> to display country name in   
-        const listEl = document.createElement('li');
+        // create a <p> to display country name in 
+        const indicators = document.createElement('li');  
+        const values1 = document.createElement('li');
         // use a template literal to display property names and values separated by a colon
-        listEl.textContent = `${result.name}: ${result.value}`
+        indicators.textContent = `${result.name}`
+        values1.textContent = `${result.value}`
+        // listEl.textContent = `${result.name}: ${result.value}`
         // append content to the <ul> with a class of .indicatorData as a <li> item
-        resultsA.appendChild(listEl);
+        resultsA.appendChild(indicators);
+        resultsA.appendChild(values1);
     });
 
     // How can I eliminate the redundancy ?????????????????????
@@ -133,15 +146,24 @@ wbApp.displayData = function(dataArray) {
 
     const country2Name = wbApp.selectedCountryNames[1];
     const country2Results = dataArray[1];
-    
+   
+    // clear previous results
+    resultsBCountryName.innerHTML = ''; 
+    resultsB.innerHTML = ''; 
+
     const ResultBParagraphEl = document.createElement('p')
     ResultBParagraphEl.textContent = `${country2Name}`;
     resultsBCountryName.appendChild(ResultBParagraphEl)
 
-    country2Results.forEach(function(result) {    
-        const listEl = document.createElement('li');
-        listEl.textContent = `${result.name}: ${result.value}`
-        resultsB.appendChild(listEl);
+    country2Results.forEach(function(result) {   
+        const indicator2 = document.createElement('li');  
+        const values2 = document.createElement('li');
+        
+        indicator2.textContent = `${result.name}`
+        values2.textContent = `${result.value}`
+        // listEl.textContent = `${result.name}: ${result.value}`
+        resultsB.appendChild(indicator2);
+        resultsB.appendChild(values2);
     });
 }
 
