@@ -27,18 +27,22 @@ wbApp.defaultIndicators = [
 
 wbApp.countryList = function() {
     // On initialization make a call to wb to populate selector option elements 
-    fetch('https://api.worldbank.org/v2/country?format=json&per_page=300')
+    fetch('https://api.worldbank.org/v2/country/all/?format=json&per_page=300')
         
         .then(function(response) {           
          return response.json();
         })
         .then(function(jsonResult) { 
             // create a global variable
-            wbApp.countries = jsonResult[1];
-      
+            // wbApp.countries = jsonResult[1];
+
+            wbApp.countries = jsonResult[1].filter((countryObject) => {
+                return countryObject.region.value != "Aggregates";
+            });
+
             // populate selectors with names of countries
             const selector = document.querySelectorAll('select'); 
-            for (let i=0;i < jsonResult[1].length; i++) {
+            for (let i=0;i < wbApp.countries.length; i++) {
                 wbApp.createSelectOption(selector[0], i);
                 wbApp.createSelectOption(selector[1], i);
             }
@@ -46,10 +50,10 @@ wbApp.countryList = function() {
             selector[0].addEventListener('change', function() {
                 // create global variable with user's chosen countries
                 wbApp.selectedCountryNames[0] = selector[0].value 
-                for (let i=0;i < jsonResult[1].length; i++) {    
-                    if (jsonResult[1][i].name === selector[0].value) {
+                for (let i=0;i < wbApp.countries.length; i++) {    
+                    if (wbApp.countries[i].name === selector[0].value) {
                         // create global variable with user's chosen country codes
-                        wbApp.selectedCountries[0] = jsonResult[1][i].id;
+                        wbApp.selectedCountries[0] = wbApp.countries[i].id;
                         // console.log(wbApp.selectedCountries);
                         // console.log(wbApp.selectedCountryNames)              
                     }
@@ -70,7 +74,8 @@ wbApp.countryList = function() {
             const compare = document.querySelector('button');
               
             compare.addEventListener('click', function() {
-             
+              
+                
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
                     alert("Please select two countries to compare");
                 } else {
@@ -219,7 +224,7 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
 
 wbApp.init = function() {
     wbApp.countryList();
-    wbApp.modals()
+
 };
 
 wbApp.init();
