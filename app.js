@@ -75,10 +75,11 @@ wbApp.countryList = function() {
               
             compare.addEventListener('click', function() {
               
-                
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
                     alert("Please select two countries to compare");
                 } else {
+                    const previousResults = document.querySelector('.resulsA .indicatorData');
+    //                       previousResults.innerHTML = " ";
                     wbApp.callWorldBankApi(wbApp.selectedCountries, wbApp.defaultIndicators);
                 }
             });
@@ -95,34 +96,65 @@ wbApp.createSelectOption = function(dropdownList, countryIndex)  {
 
 
 wbApp.displayData = function(dataArray) {
-    // console.log(dataArray);
-    // console.log(wbApp.selectedCountryNames)
+    
 
     // get div containing the class .countryName
     const resultsACountryName = document.querySelector('.resultsA .countryName');
     // get div containing the class .indicatorData
     const resultsA = document.querySelector('.resultsA .indicatorData');
 
+     // clear previous results
+     resultsACountryName.innerHTML = ''; 
+     resultsA.innerHTML = ''; 
+
     // get first country name from global variable
     const country1Name = wbApp.selectedCountryNames[0];
     // get first nested array from api call
     const country1Results = dataArray[0];
+//    console.log(dataArray[0][4].value.toFixed(3))
+
+    const country1flag = document.querySelector('.indicatorData');
+    const flagUrl = new URL(`https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`)
+    console.log(flagUrl)
+    country1flag.style.backgroundImage = flagUrl;
    
     // create a <p> to display country name in
-    const ResultAParagraphEl = document.createElement('p')
+    const resultAParagraphEl = document.createElement('p')
     // add first country to <p>
-    ResultAParagraphEl.textContent = `${country1Name}`;
+   
+    resultAParagraphEl.textContent = `${country1Name}`;
+    // using inline styling to add padding
+    resultAParagraphEl.style.padding = '25px 0'
+    
+    console.log(resultAParagraphEl)
     // append <p> to the element with a class of .resultsA
-    resultsACountryName.appendChild(ResultAParagraphEl)
+    resultsACountryName.appendChild(resultAParagraphEl)
 
     // loop through data array result and display all property keys and values 
     country1Results.forEach(function(result) { 
-        // create a <p> to display country name in   
-        const listEl = document.createElement('li');
-        // use a template literal to display property names and values separated by a colon
-        listEl.textContent = `${result.name}: ${result.value}`
+        // create a <p> to display country name in 
+        const indicator1 = document.createElement('li');  
+        const values1 = document.createElement('li');
+        // new variable to hold reformatted values
+        let newRes = '';
+
+         // use a template literal to display property names and values separated by a colon        
+        indicator1.textContent = `${result.name}`;
+
+        // conditional used to reduce size of float values
+        if (result.value % 1 == 0 || typeof result.value == 'string') {
+            newRes = result.value
+            } else {
+            newRes = result.value.toFixed(2)
+            }
+
+        values1.textContent = newRes
+        
+        // values1.textContent = `${result.value}`
+        // listEl.textContent = `${result.name}: ${result.value}`
         // append content to the <ul> with a class of .indicatorData as a <li> item
-        resultsA.appendChild(listEl);
+        resultsA.appendChild(indicator1);
+        resultsA.appendChild(values1);
     });
 
     // How can I eliminate the redundancy ?????????????????????
@@ -133,15 +165,35 @@ wbApp.displayData = function(dataArray) {
 
     const country2Name = wbApp.selectedCountryNames[1];
     const country2Results = dataArray[1];
-    
-    const ResultBParagraphEl = document.createElement('p')
-    ResultBParagraphEl.textContent = `${country2Name}`;
-    resultsBCountryName.appendChild(ResultBParagraphEl)
+   
+    // clear previous results
+    resultsBCountryName.innerHTML = ''; 
+    resultsB.innerHTML = ''; 
 
-    country2Results.forEach(function(result) {    
-        const listEl = document.createElement('li');
-        listEl.textContent = `${result.name}: ${result.value}`
-        resultsB.appendChild(listEl);
+    const resultBParagraphEl = document.createElement('p')
+    resultBParagraphEl.textContent = `${country2Name}`;
+    resultBParagraphEl.style.padding = '25px 0'
+    resultsBCountryName.appendChild(resultBParagraphEl)
+
+    country2Results.forEach(function(result) {   
+        const indicator2 = document.createElement('li');  
+        const values2 = document.createElement('li');
+        let newRes = '';
+    
+            if (result.value % 1 == 0 || typeof result.value == 'string') {
+                    newRes = result.value
+                    } else {
+                    newRes = result.value.toFixed(2)
+                    }
+       
+        indicator2.textContent = `${result.name}`
+        values2.textContent = newRes
+      
+
+  
+        // listEl.textContent = `${result.name}: ${result.value}`
+        resultsB.appendChild(indicator2);
+        resultsB.appendChild(values2);
     });
 }
 
