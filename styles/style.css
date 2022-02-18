@@ -245,8 +245,8 @@ body {
   width: 100vw;
   height: 100vh;
   opacity: 1;
-  background: -webkit-gradient(linear, left bottom, left top, from(green), to(purple));
-  background: linear-gradient(360deg, green, purple);
+  background: -webkit-gradient(linear, left bottom, left top, from(orange), to(red));
+  background: linear-gradient(360deg, orange, red);
   -webkit-transition: opacity 1000ms ease-out;
   transition: opacity 1000ms ease-out;
 }
