@@ -33,6 +33,11 @@
         }
     }
 
+.flag1 img,
+.flag2 img {
+    height: clamp(200px, 230px, 260px);
+    width: clamp(290px, 320px, 350px);
+}
 
 .resultsA .indicatorData{
     font-size: 0.75rem;
