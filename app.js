@@ -1,6 +1,6 @@
 const wbApp = {};
 
-// global variables established at initialization
+// namespace variables established at initialization
 
 //base url for the api call
 wbApp.baseUrl = 'http://api.worldbank.org/v2/country';
@@ -33,12 +33,11 @@ wbApp.countryList = function() {
          return response.json();
         })
         .then(function(jsonResult) { 
-            // create a global variable
-            //wbApp.countries = jsonResult[1];
+            // filter the countries from the jsonResult into the countries array
             wbApp.countries = jsonResult[1].filter( (countryObject)=> {
                 return countryObject.region.value != "Aggregates";
             });
-            console.log(wbApp.countries);
+
             // populate selectors with names of countries
             const selector = document.querySelectorAll('select'); 
             for (let i=0;i < wbApp.countries.length; i++) {
