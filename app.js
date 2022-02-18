@@ -96,11 +96,8 @@ wbApp.createSelectOption = function(dropdownList, countryIndex)  {
 
 
 wbApp.displayData = function(dataArray) {
-    // console.log(dataArray);
-    // console.log(wbApp.selectedCountryNames)
-
-    // const ulElement = document.querySelector('.resultsA .countryName');
     
+
     // get div containing the class .countryName
     const resultsACountryName = document.querySelector('.resultsA .countryName');
     // get div containing the class .indicatorData
@@ -116,7 +113,10 @@ wbApp.displayData = function(dataArray) {
     const country1Results = dataArray[0];
 //    console.log(dataArray[0][4].value.toFixed(3))
 
-    resultAParagraphEl.style.backgroundImage = `url('https://countryflagsapi.com/svg/bra{wbApp.selectedCountries[0]}')`
+    const country1flag = document.querySelector('.indicatorData');
+    const flagUrl = new URL(`https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`)
+    console.log(flagUrl)
+    country1flag.style.backgroundImage = flagUrl;
    
     // create a <p> to display country name in
     const resultAParagraphEl = document.createElement('p')
