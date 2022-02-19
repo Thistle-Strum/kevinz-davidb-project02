@@ -330,10 +330,10 @@ button {
   text-align: center;
 }
 
-.flag1 img,
-.flag2 img {
-  height: clamp(200px, 230px, 260px);
-  width: clamp(290px, 320px, 350px);
+.flagA img,
+.flagB img {
+  height: 266px;
+  width: 435px;
 }
 
 .resultsA .indicatorData {
