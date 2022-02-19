@@ -17,9 +17,25 @@ ul {
     margin: 0 auto;
     select {
         width: 45%;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 25px;
+        appearance: none;
+        &:focus {
+            //appearance: none;
+            outline: none;
+        }
     }
     input[type="submit"] {
-        padding: 5px 20px;
+        padding: 5px 50px;
         margin-top: 20px;
+        background-color: #68bc64;
+        border: solid 2px #68bc64;
+        border-radius: 25px;
+        &:hover,
+        &:focus {
+            color: #ffffff;
+            background-color: #345e32;
+        }
     }
 }
