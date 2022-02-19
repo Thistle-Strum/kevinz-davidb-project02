@@ -100,128 +100,137 @@ wbApp.displayData = function(dataArray) {
     // get div containing the class .countryName
     const resultsACountryName = document.querySelector('.resultsA .countryName');
     // get div containing the class .indicatorData
-    const resultsA = document.querySelector('.resultsA .indicatorData');
-    const flag1 = document.querySelector('.flag1')
-  
-// **************************************************************************  
-    
+    const resultsAIndicatorData = document.querySelector('.resultsA .indicatorData');
+    const flagA = document.querySelector('.flagA')
+
+// 1*************************************************************************  
+
 // clear previous results
      resultsACountryName.innerHTML = ''; 
-     resultsA.innerHTML = ''; 
-     flag1.innerHTML= '';
-// ****************************************************************************************
+     resultsAIndicatorData.innerHTML = ''; 
+     flagA.innerHTML= '';
+
+// 2***************************************************************************************
   
 // get first country name from global variable
-    const country1Name = wbApp.selectedCountryNames[0];
+    const countryAName = wbApp.selectedCountryNames[0];
     // get first nested array from api call
-    const country1Results = dataArray[0];
-    const flag1Url = `https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`
-    // console.log(flag1Url)
+    const countryAResults = dataArray[0];
+    const flagAUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`
+    // console.log(flagAUrl)
 
-// **************************************************************************************************
+// 3*************************************************************************************************
    
-    const flag1Element = document.createElement('img');
-    flag1Element.src = flag1Url;
-    // console.log(flag1Element);
-    // country1Flag.style.backgroundImage = `url(https://countryflagsapi.com/png/${wbApp.selectedCountries[0]})`
-    flag1.appendChild(flag1Element);
-// **********************************************************************************************
+    const flagAElement = document.createElement('img');
+    flagAElement.src = flagAUrl;
+    flagAElement.alt = `The national flag of ${wbApp.selectedCountryNames[0]}`;
+    flagA.appendChild(flagAElement);
+
+// 4*********************************************************************************************
     // create a <p> to display country name in
-    const resultAParagraphEl = document.createElement('p')
+    const resultAParagraphElement = document.createElement('p')
     // add first country to <p>
-    resultAParagraphEl.textContent = `${country1Name}`;
+    resultAParagraphElement.textContent = `${countryAName}`;
     // using inline styling to add padding
-    resultAParagraphEl.style.padding = '25px 0'
-    
-    // console.log(resultAParagraphEl)
+    resultAParagraphElement.style.padding = '25px 0';
     // append <p> to the element with a class of .resultsA
-    resultsACountryName.appendChild(resultAParagraphEl)
-// **********************************************************************************************
+    resultsACountryName.appendChild(resultAParagraphElement)
+
+// 5*********************************************************************************************
   
-
-
 // loop through data array result and display all property keys and values 
-    country1Results.forEach(function(result) { 
+    countryAResults.forEach(function(result) { 
         // create a <p> to display country name in 
         const indicator1 = document.createElement('li');  
         const values1 = document.createElement('li');
         // new variable to hold reformatted values
-        let newRes = '';
+        let newFloat = '';
 
          // use a template literal to display property names and values separated by a colon        
         indicator1.textContent = `${result.name}`;
 
         // conditional used to reduce size of float values
         if (result.value % 1 == 0 || typeof result.value == 'string') {
-            newRes = result.value
+            newFloat = result.value
             } else {
-            newRes = result.value.toFixed(2)
+            newFloat = result.value.toFixed(2)
             }
 
-        values1.textContent = newRes
-        
-        // values1.textContent = `${result.value}`
-        // listEl.textContent = `${result.name}: ${result.value}`
-        // append content to the <ul> with a class of .indicatorData as a <li> item
-        resultsA.appendChild(indicator1);
-        resultsA.appendChild(values1);
+        values1.textContent = newFloat
+
+        resultsAIndicatorData.appendChild(indicator1);
+        resultsAIndicatorData.appendChild(values1);
     });
 
     // How can I eliminate the redundancy ?????????????????????
 
     const resultsBCountryName = document.querySelector('.resultsB .countryName');
     // get div containing the class .indicatorData
-    const resultsB = document.querySelector('.resultsB .indicatorData');
-    const flag2 = document.querySelector('.flag2')
+    const resultsBIndicatorData = document.querySelector('.resultsB .indicatorData');
+    const flagB = document.querySelector('.flagB')
   
-   
     // clear previous results
     resultsBCountryName.innerHTML = ''; 
-    resultsB.innerHTML = ''; 
-    flag2.innerHTML= '';
+    resultsBIndicatorData.innerHTML = ''; 
+    flagB.innerHTML= '';
 
-    const country2Name = wbApp.selectedCountryNames[1];
-    const country2Results = dataArray[1];
-
-    const flag2Url = `https://countryflagsapi.com/png/${wbApp.selectedCountries[1]}`
-    // console.log(flag2Url)
+    const countryBName = wbApp.selectedCountryNames[1];
+    const countryBResults = dataArray[1];
+    const flagBUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[1]}`
   
-    
 // **************************************************************************************************
-   
-    const flag2Element = document.createElement('img');
-    flag2Element.src = flag2Url;
- 
-    flag2.appendChild(flag2Element);
 
+    const flagBElement = document.createElement('img');
+    flagBElement.src = flagBUrl;
+    flagBElement.alt = `The national flag of ${wbApp.selectedCountryNames[1]}`;
+    flagB.appendChild(flagBElement);
 
+    const resultBParagraphElement = document.createElement('p')
+    resultBParagraphElement.textContent = `${countryBName}`;
+    resultBParagraphElement.style.padding = '25px 0'
+    resultsBCountryName.appendChild(resultBParagraphElement)
 
-
-    const resultBParagraphEl = document.createElement('p')
-    resultBParagraphEl.textContent = `${country2Name}`;
-    resultBParagraphEl.style.padding = '25px 0'
-    resultsBCountryName.appendChild(resultBParagraphEl)
-
-    country2Results.forEach(function(result) {   
+    countryBResults.forEach(function(result) {   
         const indicator2 = document.createElement('li');  
         const values2 = document.createElement('li');
-        let newRes = '';
+        let newFloat = '';
     
             if (result.value % 1 == 0 || typeof result.value == 'string') {
-                    newRes = result.value
+                newFloat = result.value
                     } else {
-                    newRes = result.value.toFixed(2)
+                        newFloat = result.value.toFixed(2)
                     }
        
         indicator2.textContent = `${result.name}`
-        values2.textContent = newRes
+        values2.textContent = newFloat
       
-
-  
         // listEl.textContent = `${result.name}: ${result.value}`
-        resultsB.appendChild(indicator2);
-        resultsB.appendChild(values2);
+        resultsBIndicatorData.appendChild(indicator2);
+        resultsBIndicatorData.appendChild(values2);
     });
+         // **************************************************************************  
+    // create a new variable for values to be compared in loop
+            // const countryAData = dataArray[0];
+            // const countryBData = dataArray[1];
+ 
+            for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
+                const liElementA = document.querySelector(`.resultsA .indicatorData li:nth-child(${i})`);
+                const liElementB = document.querySelector(`.resultsB .indicatorData li:nth-child(${i})`);
+            
+                const countryAValue = dataArray[0][valueIndex].value
+                const countryBValue = dataArray[1][valueIndex].value
+                
+                if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
+                    // console.log('comparison not possible')
+                } else  if (countryAValue > countryBValue) {       
+                    liElementA.style.color = 'red'
+                } else {               
+                    liElementB.style.color = 'red'             
+                }                    
+            }
+
+       
+   
 }
 
 //call the world bank api to get data for a selected country and indicator
