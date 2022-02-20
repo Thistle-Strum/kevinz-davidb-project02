@@ -28,7 +28,6 @@ wbApp.defaultIndicators = [
 wbApp.countryList = function() {
     // On initialization make a call to wb to populate selector option elements 
     fetch('https://api.worldbank.org/v2/country/all/?format=json&per_page=300')
-        
         .then(function(response) {           
          return response.json();
         })
@@ -46,14 +45,12 @@ wbApp.countryList = function() {
             }
             // access user's selector values and retrieve country codes for api call
             selector[0].addEventListener('change', function() {
-                // create global variable with user's chosen countries
+                // populate selectedCountries array with user's chosen countries
                 wbApp.selectedCountryNames[0] = selector[0].value 
                 for (let i=0;i < wbApp.countries.length; i++) {    
                     if (wbApp.countries[i].name === selector[0].value) {
-                        // create global variable with user's chosen country codes
-                        wbApp.selectedCountries[0] = wbApp.countries[i].id;
-                        // console.log(wbApp.selectedCountries);
-                        // console.log(wbApp.selectedCountryNames)              
+                        // populate selectedCountries array with user's chosen country codes
+                        wbApp.selectedCountries[0] = wbApp.countries[i].id; 
                     }
                 }   
             });
@@ -61,23 +58,21 @@ wbApp.countryList = function() {
                 wbApp.selectedCountryNames[1] = selector[1].value 
                 for (let i=0;i < wbApp.countries.length; i++) {
                     if (wbApp.countries[i].name === selector[1].value) {
-                        wbApp.selectedCountries[1] = wbApp.countries[i].id; 
-                        // console.log(wbApp.selectedCountries); 
-                        // console.log(wbApp.selectedCountryNames)   
+                        wbApp.selectedCountries[1] = wbApp.countries[i].id;
                     }                     
                 }   
             });
               
-            // grab button
-            const compare = document.querySelector('input[type="submit"]');
-              
+            // attach a click event listener to the form submit input
+            const compare = document.querySelector('input[type="submit"]');              
             compare.addEventListener('click', function(event) {
                 event.preventDefault();
+                const alertMessage = document.querySelector('.error');
+                alertMessage.innerHTML = "";
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
-                    alert("Please select two countries to compare");
+                    alertMessage.textContent = "Please select two countries";
                 } else {
                     const previousResults = document.querySelector('.resulsA .indicatorData');
-    //previousResults.innerHTML = " ";
                     wbApp.callWorldBankApi(wbApp.selectedCountries, wbApp.defaultIndicators);
                 }
             });
@@ -90,8 +85,6 @@ wbApp.createSelectOption = function(dropdownList, countryIndex)  {
     option.textContent = wbApp.countries[countryIndex].name
     dropdownList.appendChild(option);
 };
-
-
 
 wbApp.displayData = function(dataArray) {
     
@@ -206,42 +199,36 @@ wbApp.displayData = function(dataArray) {
         resultsBIndicatorData.appendChild(indicator2);
         resultsBIndicatorData.appendChild(values2);
     });
-         // **************************************************************************  
-    // create a new variable for values to be compared in loop
+// **************************************************************************  
+// create a new variable for values to be compared in loop
  
-            for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
-                const liElementA = document.querySelector(`.resultsA .indicatorData li:nth-child(${i})`);
-                const liElementB = document.querySelector(`.resultsB .indicatorData li:nth-child(${i})`);
-            
-                const countryAValue = dataArray[0][valueIndex].value
-                const countryBValue = dataArray[1][valueIndex].value
-                
-                if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
-                    // console.log('comparison not possible')
-                } else  if (countryAValue > countryBValue) {       
-                    liElementA.style.fontSize = '1.35rem';
-                    liElementA.style.fontWeight = '600';
-                    // liElementA.style.color = 'white';
-                    // liElementA.style.backgroundColor = 'red';
-                    
-                    
-                } else {               
-                    liElementB.style.fontSize = '1.35rem'; 
-                    liElementB.style.fontWeight = '600';
-                    // liElementB.style.color = 'white';
-                    // liElementB.style.backgroundColor = 'red';
-
-                               
-                }                    
-            }
-
-       
-   
+    for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
+        const liElementA = document.querySelector(`.resultsA .indicatorData li:nth-child(${i})`);
+        const liElementB = document.querySelector(`.resultsB .indicatorData li:nth-child(${i})`);
+    
+        const countryAValue = dataArray[0][valueIndex].value
+        const countryBValue = dataArray[1][valueIndex].value
+        
+        if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
+            // console.log('comparison not possible')
+        } else  if (countryAValue > countryBValue) {       
+            liElementA.style.fontSize = '1.35rem';
+            liElementA.style.fontWeight = '600';
+            // liElementA.style.color = 'white';
+            // liElementA.style.backgroundColor = 'red';           
+        } else {               
+            liElementB.style.fontSize = '1.35rem'; 
+            liElementB.style.fontWeight = '600';
+            // liElementB.style.color = 'white';
+            // liElementB.style.backgroundColor = 'red';                       
+        }                    
+    }
 }
 
 //call the world bank api to get data for a selected country and indicator
 wbApp.callWorldBankApi = function(countries, indicators) {
     //construct the api url
+    //TODO - remove setApiUrl function and use the built in Url object constructor instead
     const url = wbApp.setApiUrl(countries, indicators);
     //make the api call
     fetch(url)
@@ -316,7 +303,6 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
 // }, 5000);   
 
 // **************************************************************************
-
 
 wbApp.init = function() {
     wbApp.countryList();
