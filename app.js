@@ -34,7 +34,7 @@ wbApp.countryList = function() {
         .then(function(jsonResult) { 
             // filter the countries from the jsonResult into the countries array
             wbApp.countries = jsonResult[1].filter( (countryObject)=> {
-                return countryObject.region.value != "Aggregates";
+                return countryObject.region.value != "Aggregates" && countryObject.id != "TWN";
             });
 
             // populate selectors with names of countries
@@ -261,14 +261,12 @@ wbApp.setApiUrl = function(countryIds, indicatorIds) {
 //get the indicator values from the array returned by the api
 //countryIsoCodes is the array of country IDs used in the api call
 wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
-    // console.log(dataArray);
     //put the values inside an array of two arrays, one for each country
     const indicatorValues = [[], []];
     //get the latest indicator data from the api response
     const indicatorArray = dataArray[1].filter( (indicatorItem)=> {
         return indicatorItem.date == year;
     });
-    // console.log(indicatorArray)
     indicatorArray.forEach( (item) => {
         const indicatorObject = {};
         indicatorObject.country = item.country.value; //This is the name of the country
