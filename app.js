@@ -201,27 +201,43 @@ wbApp.displayData = function(dataArray) {
 // create two new variables for values to be compared in loop
  
     for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
+        // create variables for list and use template literals to loop through specific indexes 
+        // for both countries
         const liElementA = document.querySelector(`.resultsA .indicatorData li:nth-child(${i})`);
         const liElementB = document.querySelector(`.resultsB .indicatorData li:nth-child(${i})`);
-    
+        // create variables for the  value properties
         const countryAValue = dataArray[0][valueIndex].value
+        const countryAName = dataArray[0][valueIndex].name
         const countryBValue = dataArray[1][valueIndex].value
+        const countryBName = dataArray[1][valueIndex].name
         
-        if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
-         
-        } else  if (countryAValue > countryBValue) {       
-            liElementA.style.fontSize = '1.35rem';
-            liElementA.style.fontWeight = '600';
-            // liElementA.style.color = 'white';
-            // liElementA.style.backgroundColor = 'red';           
-        } else {               
-            liElementB.style.fontSize = '1.35rem'; 
-            liElementB.style.fontWeight = '600';
-            // liElementB.style.color = 'white';
-            // liElementB.style.backgroundColor = 'red';                       
-        }                    
-    }
-}
+        // a conditional to highlight the larger values, overlook the "N/As", and target CO2 comparison
+        if (typeof countryAValue !== 'string' && typeof countryBValue !== 'string') {       
+            if (countryAName === "CO2 emissions (metric tons per capita)" & countryBName === "CO2 emissions (metric tons per capita)") {
+                if (countryAValue > countryBValue) {       
+                    liElementA.style.fontSize = '1.35rem';
+                    liElementA.style.fontWeight = '600';
+                    // liElementA.style.color = 'white';
+                    liElementA.style.border = 'red solid 5px';
+                    liElementA.style.paddingTop = '5px';            
+                } else {               
+                    liElementB.style.fontSize = '1.35rem'; 
+                    liElementB.style.fontWeight = '600';
+                    // liElementB.style.color = 'white';
+                    liElementB.style.border = 'red solid 5px';
+                    liElementB.style.paddingTop = '5px';    
+                }   
+            }   else if (countryAValue > countryBValue) {       
+                liElementA.style.fontSize = '1.35rem';
+                liElementA.style.fontWeight = '600';
+                   
+                } else {               
+                    liElementB.style.fontSize = '1.35rem'; 
+                    liElementB.style.fontWeight = '600';
+                };                               
+            }; 
+        };                    
+    };
 
 //call the world bank api to get data for a selected country and indicator
 wbApp.callWorldBankApi = function(countries, indicators) {
