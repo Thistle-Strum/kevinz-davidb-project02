@@ -34,7 +34,7 @@ wbApp.countryList = function() {
         .then(function(jsonResult) { 
             // filter the countries from the jsonResult into the countries array
             wbApp.countries = jsonResult[1].filter( (countryObject)=> {
-                return countryObject.region.value != "Aggregates";
+                return countryObject.region.value != "Aggregates" && countryObject.id != "TWN";
             });
 
             // populate selectors with names of countries
@@ -69,8 +69,11 @@ wbApp.countryList = function() {
                 event.preventDefault();
                 const alertMessage = document.querySelector('.error');
                 alertMessage.innerHTML = "";
+                // check the user selected two different countries before calling the api
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
                     alertMessage.textContent = "Please select two countries";
+                } else if(wbApp.selectedCountries[0] == wbApp.selectedCountries[1]) {
+                    alertMessage.textContent = "Please select two different countries"
                 } else {
                     const previousResults = document.querySelector('.resulsA .indicatorData');
                     wbApp.callWorldBankApi(wbApp.selectedCountries, wbApp.defaultIndicators);
@@ -94,27 +97,21 @@ wbApp.displayData = function(dataArray) {
     const resultsAIndicatorData = document.querySelector('.resultsA .indicatorData');
     const flagA = document.querySelector('.flagA')
 
-
     // clear previous results
      resultsACountryName.innerHTML = ''; 
      resultsAIndicatorData.innerHTML = ''; 
      flagA.innerHTML= '';
-
-
   
 // get first country name from global variable
     const countryAName = wbApp.selectedCountryNames[0];
     // get first nested array from api call
     const countryAResults = dataArray[0];
     const flagAUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`
-    // console.log(flagAUrl)
-
    
     const flagAElement = document.createElement('img');
     flagAElement.src = flagAUrl;
     flagAElement.alt = `The national flag of ${wbApp.selectedCountryNames[0]}`;
     flagA.appendChild(flagAElement);
-
 
     // create a <p> to display country name in
     const resultAParagraphElement = document.createElement('p')
@@ -124,8 +121,6 @@ wbApp.displayData = function(dataArray) {
     // resultAParagraphElement.style.padding = '25px 0';
     // append <p> to the element with a class of .resultsA
     resultsACountryName.appendChild(resultAParagraphElement)
-
-
   
 // loop through data array result and display all property keys and values 
     countryAResults.forEach(function(result) { 
@@ -151,8 +146,6 @@ wbApp.displayData = function(dataArray) {
         resultsAIndicatorData.appendChild(values1);
     });
 
-    // How can I eliminate the redundancy ???
-
     const resultsBCountryName = document.querySelector('.resultsB .countryName');
     // get div containing the class .indicatorData
     const resultsBIndicatorData = document.querySelector('.resultsB .indicatorData');
@@ -167,8 +160,6 @@ wbApp.displayData = function(dataArray) {
     const countryBResults = dataArray[1];
     const flagBUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[1]}`
   
-
-
     const flagBElement = document.createElement('img');
     flagBElement.src = flagBUrl;
     flagBElement.alt = `The national flag of ${wbApp.selectedCountryNames[1]}`;
@@ -199,7 +190,6 @@ wbApp.displayData = function(dataArray) {
     });
 
 // create two new variables for values to be compared in loop
- 
     for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
         // create variables for list and use template literals to loop through specific indexes 
         // for both countries
@@ -251,9 +241,7 @@ wbApp.callWorldBankApi = function(countries, indicators) {
         })
         .then( function(jsonResponse) {
             //create an object that holds the values we want as properties and return it
-            console.log(jsonResponse);
             const processedData = wbApp.getIndicatorValues(jsonResponse, countries, wbApp.currentYear);
-            console.log(processedData);
             //display the processed data using a function
             wbApp.displayData(processedData);
         });
@@ -273,14 +261,12 @@ wbApp.setApiUrl = function(countryIds, indicatorIds) {
 //get the indicator values from the array returned by the api
 //countryIsoCodes is the array of country IDs used in the api call
 wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
-    // console.log(dataArray);
     //put the values inside an array of two arrays, one for each country
     const indicatorValues = [[], []];
     //get the latest indicator data from the api response
     const indicatorArray = dataArray[1].filter( (indicatorItem)=> {
         return indicatorItem.date == year;
     });
-    // console.log(indicatorArray)
     indicatorArray.forEach( (item) => {
         const indicatorObject = {};
         indicatorObject.country = item.country.value; //This is the name of the country
