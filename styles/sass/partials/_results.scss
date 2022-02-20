@@ -20,6 +20,7 @@
         text-align: center;
         p {
             border: black 2px solid;
+            padding: 10px;
         }
     }
 }
@@ -38,6 +39,7 @@
             border-top: black 2px solid;
             border-bottom: black 2px solid;
             border-right: black 2px solid;
+            padding: 10px;
         }
     }
 }
@@ -46,9 +48,8 @@
     position: relative;
     top: 7px;
     img {
-        // height: 292px;
-        // width: 555px;;
-        width: 100%
+        height: 277px;
+        width: 100%;
     }
 }
 

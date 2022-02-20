@@ -337,6 +337,7 @@ ul {
 }
 .resultsA .countryName p {
   border: black 2px solid;
+  padding: 10px;
 }
 
 .resultsB {
@@ -354,6 +355,7 @@ ul {
   border-top: black 2px solid;
   border-bottom: black 2px solid;
   border-right: black 2px solid;
+  padding: 10px;
 }
 
 .flagA,
@@ -363,6 +365,7 @@ ul {
 }
 .flagA img,
 .flagB img {
+  height: 277px;
   width: 100%;
 }
 
@@ -415,5 +418,20 @@ ul {
 @media screen and (max-width: 1170px) {
   .resultsA {
     margin-bottom: 20px;
+  }
+
+  .countryName p {
+    border: black 2px solid;
+  }
+}
+@media screen and (max-width: 600px) {
+  .flagA img,
+.flagB img {
+    height: clamp(170px, 100%, 277px);
+    width: 100%;
+  }
+
+  .resultsA .countryName p {
+    padding: 5px;
   }
 }

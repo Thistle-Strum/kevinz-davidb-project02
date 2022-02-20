@@ -3,10 +3,39 @@
     .resultsA {
         margin-bottom: 20px;
     }
+    .countryName p {
+        border: black 2px solid;
+    }
 }
 
-// @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
+    .flagA img,
+    .flagB img {
+        height: clamp(170px, 100%, 277px);
+        width: 100%;
+    }
+    .resultsA .countryName p {
+        padding: 5px;
+    }
+}
 
+
+
+// @media screen and (max-width: 400px) {
+//     .countryName p {
+//         padding: 15px;
+//     }
+// }
+
+// @media screen and (max-width: 320px) {
+//     .flagA img,
+//     .flagB img {
+   
+//         height: 170px;
+//         // width: 555px;
+//         width: 100%;
+//     }
+// }
 
     // .results {
     //     display:flex;

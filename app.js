@@ -130,7 +130,7 @@ wbApp.displayData = function(dataArray) {
     // add first country to <p>
     resultAParagraphElement.textContent = `${countryAName}`;
     // using inline styling to add padding
-    resultAParagraphElement.style.padding = '25px 0';
+    // resultAParagraphElement.style.padding = '25px 0';
     // append <p> to the element with a class of .resultsA
     resultsACountryName.appendChild(resultAParagraphElement)
 
@@ -185,7 +185,7 @@ wbApp.displayData = function(dataArray) {
 
     const resultBParagraphElement = document.createElement('p')
     resultBParagraphElement.textContent = `${countryBName}`;
-    resultBParagraphElement.style.padding = '25px 0'
+    // resultBParagraphElement.style.padding = '25px 0'
     resultsBCountryName.appendChild(resultBParagraphElement)
 
     countryBResults.forEach(function(result) {   
