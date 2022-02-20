@@ -237,7 +237,7 @@ html {
 
 .wrapper {
   max-width: 1280px;
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -326,68 +326,200 @@ ul {
 
 .resultsA {
   display: inline-block;
-  background-color: white;
-  border-radius: 20px 0 0 20px;
+  background-color: transparent;
   text-align: center;
-  min-width: 50%;
 }
 .resultsA .countryName {
+  background-color: white;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
+}
+.resultsA .countryName p {
+  border: black 2px solid;
 }
 
 .resultsB {
   display: inline-block;
-  background-color: white;
-  border-radius: 0 20px 20px 0;
+  background-color: transparent;
   text-align: center;
-  min-width: 50%;
 }
 .resultsB .countryName {
+  background-color: white;
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
 }
+.resultsB .countryName p {
+  border-top: black 2px solid;
+  border-bottom: black 2px solid;
+  border-right: black 2px solid;
+}
 
+.flagA,
+.flagB {
+  position: relative;
+  top: 7px;
+}
 .flagA img,
 .flagB img {
-  height: 266px;
-  width: 435px;
+  height: 292px;
+  width: 555px;
 }
 
 .resultsA .indicatorData {
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-align: left;
-  padding-left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: white;
+  padding: 4%;
 }
-.resultsA .indicatorData ul {
-  z-index: 100;
+.resultsA .indicatorData li:nth-child(odd) {
+  padding: 5px 0;
+  border: black solid 2px;
+  border-radius: 20px;
+  background-color: white;
 }
 .resultsA .indicatorData li:nth-child(even) {
   font-size: 1.15rem;
-  font-weight: 600;
-  text-align: right;
-  padding-right: 10px;
+  font-weight: 400;
+  border-radius: 50%;
+  text-align: center;
+  margin: 1% 30%;
+  padding: 13px 0 8px 0;
 }
 
 .resultsB .indicatorData {
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-align: right;
-  padding-right: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  background-color: white;
+  padding: 4%;
+}
+.resultsB .indicatorData li:nth-child(odd) {
+  display: invisible;
+  padding: 5px 0;
+  border: black solid 2px;
+  border-radius: 20px;
+  background-color: white;
 }
 .resultsB .indicatorData li:nth-child(even) {
   font-size: 1.15rem;
-  font-weight: 600;
-  text-align: left;
-  padding-left: 10px;
+  font-weight: 400;
+  border-radius: 50%;
+  text-align: center;
+  margin: 1% 30%;
+  padding: 13px 0 8px 0;
 }
 
-@media screen and (max-width: 883px) {
-  .resultsA,
-.resultsB {
+@media screen and (max-width: 1170px) {
+  .resultsA {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .results {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .resultsA {
+    display: inline-block;
+    background-color: transparent;
+    text-align: center;
+  }
+  .resultsA .countryName {
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .resultsA .countryName p {
+    border: black 2px solid;
+  }
+
+  .resultsB {
+    display: inline-block;
+    background-color: transparent;
+    text-align: center;
+  }
+  .resultsB .countryName {
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  .resultsB .countryName p {
+    border-top: black 2px solid;
+    border-bottom: black 2px solid;
+    border-right: black 2px solid;
+  }
+
+  .flagA,
+.flagB {
+    position: relative;
+    top: 7px;
+  }
+  .flagA img,
+.flagB img {
+    height: 140px;
+    width: 304px;
+  }
+
+  .resultsA .indicatorData {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: white;
+    padding: 4%;
+  }
+  .resultsA .indicatorData li:nth-child(odd) {
+    padding: 5px 0;
+    border: black solid 2px;
     border-radius: 20px;
+    background-color: white;
+  }
+  .resultsA .indicatorData li:nth-child(even) {
+    font-size: 1.15rem;
+    font-weight: 400;
+    border-radius: 50%;
+    text-align: center;
+    margin: 1% 30%;
+    padding: 13px 0 8px 0;
+  }
+
+  .resultsB .indicatorData {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: white;
+    padding: 4%;
+  }
+  .resultsB .indicatorData li:nth-child(odd) {
+    display: invisible;
+    padding: 5px 0;
+    border: black solid 2px;
+    border-radius: 20px;
+    background-color: white;
+  }
+  .resultsB .indicatorData li:nth-child(even) {
+    font-size: 1.15rem;
+    font-weight: 400;
+    border-radius: 50%;
+    text-align: center;
+    margin: 1% 30%;
+    padding: 13px 0 8px 0;
   }
 }

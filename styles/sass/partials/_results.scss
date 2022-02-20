@@ -6,73 +6,171 @@
     flex-wrap: wrap;
     margin: 0 auto;
     margin-top: 20px;
-    }
-    .resultsA {
-        display: inline-block;
-        background-color: white;
-        border-radius: 20px 0 0 20px;
-        text-align: center;
-        min-width: 50%;
-        .countryName {
-            font-size: 1.5rem;
-            font-weight:600;
-            text-align: center;
-        }
-    }
-    .resultsB {
-        display: inline-block;
-        background-color:white;
-        border-radius: 0 20px 20px 0 ;
-        text-align: center;
-        min-width: 50%;
-        .countryName {
-            font-size: 1.5rem;
-            font-weight:600;
-            text-align: center;
-            
-        }
-    }
+ }
+.resultsA {
+    display: inline-block;
+    background-color: transparent;
 
-.flagA img,
-.flagB img {
-    height: 266px;
-    width: 435px;
+    text-align: center;
+    // min-width: 50%;
+    .countryName {
+        background-color: white;
+        font-size: 1.5rem;
+        font-weight:600;
+        text-align: center;
+        p {
+            border: black 2px solid;
+        }
+    }
+}
+.resultsB {
+    display: inline-block;
+    background-color: transparent;
+
+    text-align: center;
+    // min-width: 50%;
+    .countryName {
+        background-color: white;
+        font-size: 1.5rem;
+        font-weight:600;
+        text-align: center;
+        p {
+            border-top: black 2px solid;
+            border-bottom: black 2px solid;
+            border-right: black 2px solid;
+        }
+    }
+}
+.flagA,
+.flagB {
+    position: relative;
+    top: 7px;
+    img {
+        height: 292px;
+        width: 555px;;
+    }
 }
 
 .resultsA .indicatorData{
-    font-size: 0.75rem;
-    font-weight: 400;
-    text-align: left;
-    padding-left: 10px;
-    ul {
-        z-index: 100;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: white;
+    padding: 4%;
+    li:nth-child(odd) {
+        padding: 5px 0;
+        border: black solid 2px;
+        border-radius: 20px;
+        background-color: white;
     }
     li:nth-child(even) {
         font-size: 1.15rem;
-        font-weight: 600;
-        text-align: right;
-        padding-right: 10px;
+        font-weight: 400;
+        border-radius: 50%;
+        text-align: center;
+        margin: 1% 30%;
+        padding: 13px 0 8px 0;;
+       
     }
 }
 
 .resultsB .indicatorData{
-    font-size: 0.75rem;
-    font-weight: 400;
-    text-align: right;
-    padding-right: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    background-color: white;
+    padding: 4%;
+    li:nth-child(odd) {
+        display: invisible;
+        padding: 5px 0;
+        border: black solid 2px;
+        border-radius: 20px;
+        background-color: white;
+    }
     li:nth-child(even) {
         font-size: 1.15rem;
-        font-weight: 600;
-        text-align: left;
-        padding-left: 10px;
+        font-weight: 400;
+        border-radius: 50%;
+        text-align: center;
+        margin: 1% 30%;
+        padding: 13px 0 8px 0;;
     }
 }
 
-// media queries... 
 
-@media screen and (max-width: 883px) {
-    .resultsA,
-    .resultsB {
-        border-radius: 20px;
-    }
-  }
+
+
+
+
+// ************************************************************
+
+// .results {
+//     display:flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     flex-wrap: wrap;
+//     margin: 0 auto;
+//     margin-top: 20px;
+//     }
+//     .resultsA {
+//         display: inline-block;
+//         background-color: white;
+//         border-radius: 20px 0 0 20px;
+//         text-align: center;
+//         min-width: 50%;
+//         .countryName {
+//             font-size: 1.5rem;
+//             font-weight:600;
+//             text-align: center;
+//         }
+//     }
+//     .resultsB {
+//         display: inline-block;
+//         background-color:white;
+//         border-radius: 0 20px 20px 0 ;
+//         text-align: center;
+//         min-width: 50%;
+//         .countryName {
+//             font-size: 1.5rem;
+//             font-weight:600;
+//             text-align: center;
+            
+//         }
+//     }
+
+// .flagA img,
+// .flagB img {
+//     height: 266px;
+//     width: 435px;
+// }
+
+// .resultsA .indicatorData{
+//     font-size: 0.75rem;
+//     font-weight: 400;
+//     text-align: left;
+//     padding-left: 10px;
+//     ul {
+//         z-index: 100;
+//     }
+//     li:nth-child(even) {
+//         font-size: 1.15rem;
+//         font-weight: 600;
+//         text-align: right;
+//         padding-right: 10px;
+        
+//     }
+// }
+
+// .resultsB .indicatorData{
+//     font-size: 0.75rem;
+//     font-weight: 400;
+//     text-align: right;
+//     padding-right: 10px;
+//     li:nth-child(even) {
+//         font-size: 1.15rem;
+//         font-weight: 600;
+//         text-align: left;
+//         padding-left: 10px;
+//     }
+// }
+

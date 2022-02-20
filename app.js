@@ -208,8 +208,6 @@ wbApp.displayData = function(dataArray) {
     });
          // **************************************************************************  
     // create a new variable for values to be compared in loop
-            // const countryAData = dataArray[0];
-            // const countryBData = dataArray[1];
  
             for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
                 const liElementA = document.querySelector(`.resultsA .indicatorData li:nth-child(${i})`);
@@ -221,9 +219,15 @@ wbApp.displayData = function(dataArray) {
                 if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
                     // console.log('comparison not possible')
                 } else  if (countryAValue > countryBValue) {       
-                    liElementA.style.color = 'red'
+                    // liElementA.style.fontSize = '1.35rem';
+                    liElementA.style.color = 'white';
+                    liElementA.style.backgroundColor = 'red';
                 } else {               
-                    liElementB.style.color = 'red'             
+                    // liElementB.style.fontSize = '1.35rem'; 
+                    liElementB.style.color = 'white';
+                    liElementB.style.backgroundColor = 'red';
+
+                               
                 }                    
             }
 
