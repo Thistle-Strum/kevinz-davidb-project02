@@ -328,6 +328,7 @@ ul {
   display: inline-block;
   background-color: transparent;
   text-align: center;
+  margin-right: 10px;
 }
 .resultsA .countryName {
   background-color: white;
@@ -344,6 +345,7 @@ ul {
   display: inline-block;
   background-color: transparent;
   text-align: center;
+  margin-left: 10px;
 }
 .resultsB .countryName {
   background-color: white;
@@ -352,20 +354,17 @@ ul {
   text-align: center;
 }
 .resultsB .countryName p {
-  border-top: black 2px solid;
-  border-bottom: black 2px solid;
-  border-right: black 2px solid;
+  border: black 2px solid;
   padding: 10px;
 }
 
 .flagA,
 .flagB {
-  position: relative;
-  top: 7px;
+  padding-bottom: 12px;
 }
 .flagA img,
 .flagB img {
-  height: 277px;
+  height: 291px;
   width: 100%;
 }
 
@@ -427,7 +426,7 @@ ul {
 @media screen and (max-width: 600px) {
   .flagA img,
 .flagB img {
-    height: clamp(170px, 100%, 277px);
+    height: clamp(170px, 90%, 277px);
     width: 100%;
   }
 

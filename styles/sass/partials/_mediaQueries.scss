@@ -11,7 +11,7 @@
 @media screen and (max-width: 600px) {
     .flagA img,
     .flagB img {
-        height: clamp(170px, 100%, 277px);
+        height: clamp(170px, 90%, 277px);
         width: 100%;
     }
     .resultsA .countryName p {
