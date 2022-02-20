@@ -41,15 +41,17 @@ h3 {
     margin-top: 20px;
 }
 
+p {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 80%;
+    a {
+        color: black;
+        text-decoration: none;
+    }
+
+}
+
 header {
     text-align: center;
-    p {
-        margin-top: 5px;
-        font-size: 80%;
-        a {
-            color: black;
-            text-decoration: none;
-        }
-
-    }
 }

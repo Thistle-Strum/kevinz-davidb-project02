@@ -252,7 +252,7 @@ wbApp.setApiUrl = function(countryIds, indicatorIds) {
     //create a string of indicator IDs separated by ;
     const indicatorString = indicatorIds.join(';');
     //construct the api url - get the indicator values for the past 5 years, filling in any null values with the most recent value from the past five years
-    const queryUrl = `${wbApp.baseUrl}/${countryString}/indicator/${indicatorString}?source=2&mrv=5&gapfill=Y&per_page=300&format=json`;
+    const queryUrl = `${wbApp.baseUrl}/${countryString}/indicator/${indicatorString}?source=2&mrv=10&gapfill=Y&per_page=300&format=json`;
     return queryUrl;
 };
 
@@ -289,20 +289,6 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
 
     return indicatorValues;
 };
-
-// setInterval (() => {
-
-//     const randomDegree = Math.floor(Math.random() * 360 + 1) + "deg";
-//     const colorArray = [ "blue","orange","purple","red","green","yellow"]
-//     const randomColor1 = Math.floor(Math.random() * colorArray.length);
-//     console.log(randColor1)    
-//     const randomColor2 = Math.floor(Math.random() * colorArray.length);
-             
-//     document.querySelector('body').style.background = `linear-gradient(${randDeg}, ${colorArray[randColor1]}, ${colorArray[randColor2]})`; 
-   
-// }, 5000);   
-
-// **************************************************************************
 
 wbApp.init = function() {
     wbApp.countryList();
