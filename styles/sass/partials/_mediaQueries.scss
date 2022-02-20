@@ -1,0 +1,108 @@
+
+@media screen and (max-width: 1170px) {
+    .resultsA {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+
+    .results {
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        margin-top: 20px;
+     }
+    .resultsA {
+        display: inline-block;
+        background-color: transparent;
+        text-align: center;
+        
+        .countryName {
+            background-color: white;
+            font-size: 1.5rem;
+            font-weight:600;
+            text-align: center;
+            p {
+                border: black 2px solid;
+            }
+        }
+    }
+    .resultsB {
+        display: inline-block;
+        background-color: transparent;   
+        text-align: center;
+      
+        .countryName {
+            background-color: white;
+            font-size: 1.5rem;
+            font-weight:600;
+            text-align: center;
+            p {
+                border-top: black 2px solid;
+                border-bottom: black 2px solid;
+                border-right: black 2px solid;
+            }
+        }
+    }
+    .flagA,
+    .flagB {
+        position: relative;
+        top: 7px;
+        img {
+            height: 140px;
+            width: 304px;;
+        }
+    }
+    
+    .resultsA .indicatorData{
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        background-color: white;
+        padding: 4%;
+        li:nth-child(odd) {
+            padding: 5px 0;
+            border: black solid 2px;
+            border-radius: 20px;
+            background-color: white;
+        }
+        li:nth-child(even) {
+            font-size: 1.15rem;
+            font-weight: 400;
+            border-radius: 50%;
+            text-align: center;
+            margin: 1% 30%;
+            padding: 13px 0 8px 0;;
+           
+        }
+    }
+    
+    .resultsB .indicatorData{
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        background-color: white;
+        padding: 4%;
+        li:nth-child(odd) {
+            display: invisible;
+            padding: 5px 0;
+            border: black solid 2px;
+            border-radius: 20px;
+            background-color: white;
+        }
+        li:nth-child(even) {
+            font-size: 1.15rem;
+            font-weight: 400;
+            border-radius: 50%;
+            text-align: center;
+            margin: 1% 30%;
+            padding: 13px 0 8px 0;;
+        }
+    }
+    
+}
+
