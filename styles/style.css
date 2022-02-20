@@ -460,6 +460,18 @@ header p a {
     border: black 2px solid;
   }
 }
+@media screen and (max-width: 750px) {
+  .selectCountries {
+    width: 100%;
+    min-width: 320px;
+  }
+  .selectCountries select,
+.selectCountries input[type=submit] {
+    width: 85%;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
 @media screen and (max-width: 600px) {
   .flagA img,
 .flagB img {
