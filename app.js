@@ -94,14 +94,13 @@ wbApp.displayData = function(dataArray) {
     const resultsAIndicatorData = document.querySelector('.resultsA .indicatorData');
     const flagA = document.querySelector('.flagA')
 
-// 1*************************************************************************  
 
-// clear previous results
+    // clear previous results
      resultsACountryName.innerHTML = ''; 
      resultsAIndicatorData.innerHTML = ''; 
      flagA.innerHTML= '';
 
-// 2***************************************************************************************
+
   
 // get first country name from global variable
     const countryAName = wbApp.selectedCountryNames[0];
@@ -110,14 +109,13 @@ wbApp.displayData = function(dataArray) {
     const flagAUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`
     // console.log(flagAUrl)
 
-// 3*************************************************************************************************
    
     const flagAElement = document.createElement('img');
     flagAElement.src = flagAUrl;
     flagAElement.alt = `The national flag of ${wbApp.selectedCountryNames[0]}`;
     flagA.appendChild(flagAElement);
 
-// 4*********************************************************************************************
+
     // create a <p> to display country name in
     const resultAParagraphElement = document.createElement('p')
     // add first country to <p>
@@ -127,7 +125,7 @@ wbApp.displayData = function(dataArray) {
     // append <p> to the element with a class of .resultsA
     resultsACountryName.appendChild(resultAParagraphElement)
 
-// 5*********************************************************************************************
+
   
 // loop through data array result and display all property keys and values 
     countryAResults.forEach(function(result) { 
@@ -153,7 +151,7 @@ wbApp.displayData = function(dataArray) {
         resultsAIndicatorData.appendChild(values1);
     });
 
-    // How can I eliminate the redundancy ?????????????????????
+    // How can I eliminate the redundancy ???
 
     const resultsBCountryName = document.querySelector('.resultsB .countryName');
     // get div containing the class .indicatorData
@@ -169,7 +167,7 @@ wbApp.displayData = function(dataArray) {
     const countryBResults = dataArray[1];
     const flagBUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[1]}`
   
-// **************************************************************************************************
+
 
     const flagBElement = document.createElement('img');
     flagBElement.src = flagBUrl;
@@ -199,8 +197,8 @@ wbApp.displayData = function(dataArray) {
         resultsBIndicatorData.appendChild(indicator2);
         resultsBIndicatorData.appendChild(values2);
     });
-// **************************************************************************  
-// create a new variable for values to be compared in loop
+
+// create two new variables for values to be compared in loop
  
     for(let i=2, valueIndex=0; i <=10, valueIndex <= 4; i += 2, valueIndex++) {
         const liElementA = document.querySelector(`.resultsA .indicatorData li:nth-child(${i})`);
@@ -210,7 +208,7 @@ wbApp.displayData = function(dataArray) {
         const countryBValue = dataArray[1][valueIndex].value
         
         if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
-            // console.log('comparison not possible')
+         
         } else  if (countryAValue > countryBValue) {       
             liElementA.style.fontSize = '1.35rem';
             liElementA.style.fontWeight = '600';
