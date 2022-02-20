@@ -130,7 +130,7 @@ wbApp.displayData = function(dataArray) {
     // add first country to <p>
     resultAParagraphElement.textContent = `${countryAName}`;
     // using inline styling to add padding
-    resultAParagraphElement.style.padding = '25px 0';
+    // resultAParagraphElement.style.padding = '25px 0';
     // append <p> to the element with a class of .resultsA
     resultsACountryName.appendChild(resultAParagraphElement)
 
@@ -185,7 +185,7 @@ wbApp.displayData = function(dataArray) {
 
     const resultBParagraphElement = document.createElement('p')
     resultBParagraphElement.textContent = `${countryBName}`;
-    resultBParagraphElement.style.padding = '25px 0'
+    // resultBParagraphElement.style.padding = '25px 0'
     resultsBCountryName.appendChild(resultBParagraphElement)
 
     countryBResults.forEach(function(result) {   
@@ -219,13 +219,17 @@ wbApp.displayData = function(dataArray) {
                 if (typeof countryAValue == 'string' || typeof countryBValue == 'string') {
                     // console.log('comparison not possible')
                 } else  if (countryAValue > countryBValue) {       
-                    // liElementA.style.fontSize = '1.35rem';
-                    liElementA.style.color = 'white';
-                    liElementA.style.backgroundColor = 'red';
+                    liElementA.style.fontSize = '1.35rem';
+                    liElementA.style.fontWeight = '600';
+                    // liElementA.style.color = 'white';
+                    // liElementA.style.backgroundColor = 'red';
+                    
+                    
                 } else {               
-                    // liElementB.style.fontSize = '1.35rem'; 
-                    liElementB.style.color = 'white';
-                    liElementB.style.backgroundColor = 'red';
+                    liElementB.style.fontSize = '1.35rem'; 
+                    liElementB.style.fontWeight = '600';
+                    // liElementB.style.color = 'white';
+                    // liElementB.style.backgroundColor = 'red';
 
                                
                 }                    
