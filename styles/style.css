@@ -245,8 +245,8 @@ body {
   width: 100vw;
   height: 100vh;
   opacity: 1;
-  background: -webkit-gradient(linear, left bottom, left top, from(orange), to(red));
-  background: linear-gradient(360deg, orange, red);
+  background: -webkit-gradient(linear, left bottom, left top, from(#e0eaf2), to(#93b4d0));
+  background: linear-gradient(360deg, #e0eaf2, #93b4d0);
   -webkit-transition: opacity 1000ms ease-out;
   transition: opacity 1000ms ease-out;
 }
@@ -264,12 +264,7 @@ ul {
   list-style: none;
 }
 
-select {
-  width: 250px;
-  margin: 10px 0 15px 0;
-}
-
-.countrySelectors {
+.selectCountries {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,16 +272,39 @@ select {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 60%;
+  max-width: 600px;
+  margin: 0 auto;
 }
-
-button {
-  display: block;
-  margin: 0px auto;
+.selectCountries select {
+  width: 45%;
+  text-align: center;
+  padding: 5px 0;
+  border: solid 1px #93b4d0;
+  border-radius: 25px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.selectCountries select:focus {
+  outline: none;
+  border: solid 1px #476884;
+}
+.selectCountries input[type=submit] {
+  padding: 5px 50px;
+  margin-top: 20px;
+  background-color: #68bc64;
+  border: solid 2px #68bc64;
+  border-radius: 25px;
+}
+.selectCountries input[type=submit]:hover, .selectCountries input[type=submit]:focus {
+  color: #ffffff;
+  background-color: #345e32;
 }
 
 .results {

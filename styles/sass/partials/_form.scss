@@ -6,20 +6,37 @@ label {
 ul {
     list-style: none;
 }
-select {
-    width: 250px;
-    margin: 10px 0 15px 0;
-}
-.countrySelectors {
+
+.selectCountries {
     display:flex;
     flex-direction: row;
-    justify-content: center;
     flex-wrap: wrap;
-}
-
-
-
-button {
-    display: block;
-    margin: 0px auto;
+    justify-content: space-evenly;
+    width: 60%;
+    max-width: 600px;
+    margin: 0 auto;
+    select {
+        width: 45%;
+        text-align: center;
+        padding: 5px 0;
+        border: solid 1px #93b4d0;
+        border-radius: 25px;
+        appearance: none;
+        &:focus {
+            outline: none;
+            border: solid 1px #476884;
+        }
+    }
+    input[type="submit"] {
+        padding: 5px 50px;
+        margin-top: 20px;
+        background-color: #68bc64;
+        border: solid 2px #68bc64;
+        border-radius: 25px;
+        &:hover,
+        &:focus {
+            color: #ffffff;
+            background-color: #345e32;
+        }
+    }
 }

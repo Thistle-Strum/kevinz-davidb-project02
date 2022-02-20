@@ -1,6 +1,6 @@
 const wbApp = {};
 
-// global variables established at initialization
+// namespace variables established at initialization
 
 //base url for the api call
 wbApp.baseUrl = 'https://api.worldbank.org/v2/country';
@@ -33,10 +33,8 @@ wbApp.countryList = function() {
          return response.json();
         })
         .then(function(jsonResult) { 
-            // create a global variable
-            // wbApp.countries = jsonResult[1];
-
-            wbApp.countries = jsonResult[1].filter((countryObject) => {
+            // filter the countries from the jsonResult into the countries array
+            wbApp.countries = jsonResult[1].filter( (countryObject)=> {
                 return countryObject.region.value != "Aggregates";
             });
 
@@ -61,9 +59,9 @@ wbApp.countryList = function() {
             });
             selector[1].addEventListener('change', function() {
                 wbApp.selectedCountryNames[1] = selector[1].value 
-                for (let i=0;i < jsonResult[1].length; i++) {
-                    if (jsonResult[1][i].name === selector[1].value) {
-                        wbApp.selectedCountries[1] = jsonResult[1][i].id; 
+                for (let i=0;i < wbApp.countries.length; i++) {
+                    if (wbApp.countries[i].name === selector[1].value) {
+                        wbApp.selectedCountries[1] = wbApp.countries[i].id; 
                         // console.log(wbApp.selectedCountries); 
                         // console.log(wbApp.selectedCountryNames)   
                     }                     
@@ -71,15 +69,15 @@ wbApp.countryList = function() {
             });
               
             // grab button
-            const compare = document.querySelector('button');
+            const compare = document.querySelector('input[type="submit"]');
               
-            compare.addEventListener('click', function() {
-              
+            compare.addEventListener('click', function(event) {
+                event.preventDefault();
                 if(wbApp.selectedCountries[0] == "" || wbApp.selectedCountries[1] == "") {
                     alert("Please select two countries to compare");
                 } else {
                     const previousResults = document.querySelector('.resulsA .indicatorData');
-    //                       previousResults.innerHTML = " ";
+    //previousResults.innerHTML = " ";
                     wbApp.callWorldBankApi(wbApp.selectedCountries, wbApp.defaultIndicators);
                 }
             });
@@ -248,6 +246,7 @@ wbApp.callWorldBankApi = function(countries, indicators) {
         })
         .then( function(jsonResponse) {
             //create an object that holds the values we want as properties and return it
+            console.log(jsonResponse);
             const processedData = wbApp.getIndicatorValues(jsonResponse, countries, wbApp.currentYear);
             console.log(processedData);
             //display the processed data using a function
@@ -296,6 +295,7 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
             indicatorValues[1].push(indicatorObject);
         }
     });
+
     return indicatorValues;
 };
 
@@ -316,7 +316,6 @@ wbApp.getIndicatorValues = function(dataArray, countryIsoCodes, year) {
 
 wbApp.init = function() {
     wbApp.countryList();
-
 };
 
 wbApp.init();
