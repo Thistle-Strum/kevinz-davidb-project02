@@ -277,30 +277,37 @@ ul {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  width: 60%;
-  max-width: 600px;
+  width: 700px;
   margin: 0 auto;
+  position: relative;
 }
 .selectCountries select {
   width: 45%;
-  text-align: center;
-  padding: 5px 0;
+  min-width: 300px;
+  padding: 5px 0 5px 5%;
   border: solid 1px #93b4d0;
   border-radius: 25px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  position: relative;
+  background-image: url(../assets/globe.svg);
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 95% center;
 }
-.selectCountries select:focus {
+.selectCountries select:hover, .selectCountries select:focus {
   outline: none;
   border: solid 1px #476884;
+  background-size: 22px;
 }
 .selectCountries input[type=submit] {
-  padding: 5px 50px;
+  padding: 5px 75px;
   margin-top: 20px;
   background-color: #68bc64;
   border: solid 2px #68bc64;
   border-radius: 25px;
+  position: relative;
 }
 .selectCountries input[type=submit]:hover, .selectCountries input[type=submit]:focus {
   color: #ffffff;
