@@ -251,16 +251,12 @@ body {
   transition: opacity 1000ms ease-out;
 }
 
-h1, h2, h3 {
-  text-align: center;
-}
-
 h2, h3 {
   font-size: 90%;
 }
 
 h1 {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 h2 {
@@ -271,12 +267,16 @@ h3 {
   margin-top: 20px;
 }
 
-label {
-  margin-left: 22%;
+header {
+  text-align: center;
 }
-
-ul {
-  list-style: none;
+header p {
+  margin-top: 5px;
+  font-size: 80%;
+}
+header p a {
+  color: black;
+  text-decoration: none;
 }
 
 .selectCountries {
