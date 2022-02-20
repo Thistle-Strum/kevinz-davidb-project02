@@ -285,6 +285,7 @@ ul {
   width: 45%;
   text-align: center;
   padding: 5px 0;
+  border: solid 1px #93b4d0;
   border-radius: 25px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -292,6 +293,7 @@ ul {
 }
 .selectCountries select:focus {
   outline: none;
+  border: solid 1px #476884;
 }
 .selectCountries input[type=submit] {
   padding: 5px 50px;

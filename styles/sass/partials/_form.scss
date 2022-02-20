@@ -19,11 +19,12 @@ ul {
         width: 45%;
         text-align: center;
         padding: 5px 0;
+        border: solid 1px #93b4d0;
         border-radius: 25px;
         appearance: none;
         &:focus {
-            //appearance: none;
             outline: none;
+            border: solid 1px #476884;
         }
     }
     input[type="submit"] {
