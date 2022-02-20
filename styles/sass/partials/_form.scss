@@ -1,37 +1,37 @@
-label {
-    margin-left: 22%;
-}
-
-ul {
-    list-style: none;
-}
-
 .selectCountries {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 60%;
-    max-width: 600px;
+    width: 700px;
     margin: 0 auto;
+    position: relative;
     select {
         width: 45%;
-        text-align: center;
-        padding: 5px 0;
+        min-width: 300px;
+        padding: 5px 0 5px 5%;
         border: solid 1px #93b4d0;
         border-radius: 25px;
         appearance: none;
+        position: relative;
+        background-image: url(../assets/globe.svg);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: 95% center;
+        &:hover,
         &:focus {
             outline: none;
             border: solid 1px #476884;
+            background-size: 22px;
         }
     }
     input[type="submit"] {
-        padding: 5px 50px;
-        margin-top: 20px;
+        padding: 5px 75px;
+        margin: 20px 0;
         background-color: #68bc64;
         border: solid 2px #68bc64;
         border-radius: 25px;
+        position: relative;
         &:hover,
         &:focus {
             color: #ffffff;

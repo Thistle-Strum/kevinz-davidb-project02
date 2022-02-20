@@ -7,44 +7,45 @@
     <link rel="stylesheet" href="styles/style.css">
     <title>Our World in Data</title>
 </head>
-<body id="background">
-    <div class="wrapper">
+    <body id="background">
         <header>
-            <h1>Our World in Data</h1>
-            <h2>Select two countries to compare their stats</h2>
-            <form action="#" class="selectCountries">
-                <label for="countryA" class="sr-only">Select the first country</label>
-                <select id="countryA" name="countryA" class="countries" >
-                    <option value="">Select a country</option>
-                </select>
-                
-                <label for="countryB" class="sr-only">Select the second country</label>
-                <select  id="countryB" name="countryB" class="countries" >
-                    <option value="">Select a country</option>
-                </select>
+            <div class="wrapper">
+                <p>Created at <a href="https://junocollege.com/">Juno College</a> by Kevin Zhang and David Benitez</p>
+                <h1>Our World in Data</h1>
+                <h2>Select two countries to compare their stats</h2>
+                <form action="#" class="selectCountries">
+                    <label for="countryA" class="sr-only">Select the first country</label>
+                    <select id="countryA" name="countryA" class="countries" >
+                        <option value="" disabled="disabled" selected="">Select a country</option>
+                    </select>
+                    
+                    <label for="countryB" class="sr-only">Select the second country</label>
+                    <select  id="countryB" name="countryB" class="countries" >
+                        <option value="" disabled="disabled"selected="">Select a country</option>
+                    </select>
 
-                <label for="compareButton" class="sr-only">Click to Compare two countries</label>
-                <input type="submit" value="Compare" class="compareButton" id="compareButton">
-            </form>
-            <h3 class="error"></h3>
+                    <label for="compareButton" class="sr-only">Click to Compare two countries</label>
+                    <input type="submit" value="Compare" class="compareButton" id="compareButton">
+                </form>
+                <h3 class="error"></h3>
+            </div>
         </header>
         <main>
-            <section class="results">
-                    <div class="resultsA">
-                        <div class="flagA"></div>
-                        <div class="countryName"></div>
-                        <ul class="indicatorData"></ul>
-                    </div>
-                    <div class="resultsB">
-                        <div class="flagB"></div>
-                        <div class="countryName"></div>
-                        <ul class="indicatorData"></ul>
-                    </div>   
-            </section>
+            <div class="wrapper">
+                <section class="results">
+                        <div class="resultsA">
+                            <div class="flagA"></div>
+                            <div class="countryName"></div>
+                            <ul class="indicatorData"></ul>
+                        </div>
+                        <div class="resultsB">
+                            <div class="flagB"></div>
+                            <div class="countryName"></div>
+                            <ul class="indicatorData"></ul>
+                        </div>   
+                </section>
             </div>
-        </main>   
-    </div>
-
-<script src="app.js"></script>
-</body>
+        </main>
+    <script src="app.js"></script>
+    </body>
 </html>

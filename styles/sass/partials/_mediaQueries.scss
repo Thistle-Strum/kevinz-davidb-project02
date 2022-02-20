@@ -8,6 +8,19 @@
     }
 }
 
+@media screen and (max-width: 750px) {
+    .selectCountries {
+        width: 100%;
+        min-width: 320px;
+        select,
+        input[type="submit"] {
+            width: 85%;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+    }
+}
+
 @media screen and (max-width: 600px) {
     .flagA img,
     .flagB img {
