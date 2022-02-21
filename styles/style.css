@@ -341,13 +341,13 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   margin: 0 auto;
-  margin-top: 20px;
 }
 
 .resultsA {
   display: inline-block;
   background-color: transparent;
   text-align: center;
+  width: 40%;
   margin-right: 10px;
 }
 .resultsA .countryName {
@@ -365,6 +365,7 @@ header {
   display: inline-block;
   background-color: transparent;
   text-align: center;
+  width: 40%;
   margin-left: 10px;
 }
 .resultsB .countryName {
@@ -380,11 +381,12 @@ header {
 
 .flagA,
 .flagB {
-  padding-bottom: 12px;
+  height: clamp(140px, 100%, 30%);
+  margin-bottom: 4%;
 }
 .flagA img,
 .flagB img {
-  height: 291px;
+  height: 100%;
   width: 100%;
 }
 
@@ -396,7 +398,7 @@ header {
   padding: 4%;
 }
 .resultsA .indicatorData li:nth-child(odd) {
-  padding: 5px 0;
+  padding: 5px 3px;
   border: black solid 2px;
   border-radius: 20px;
   background-color: white;
@@ -419,7 +421,7 @@ header {
   padding: 4%;
 }
 .resultsB .indicatorData li:nth-child(odd) {
-  padding: 5px 0;
+  padding: 5px 3px;
   border: black solid 2px;
   border-radius: 20px;
   background-color: white;
@@ -434,18 +436,32 @@ header {
   padding: 13px 0 8px 0;
 }
 
-@media screen and (max-width: 1170px) {
+@media screen and (max-width: 1333px) {
+  .wrapper {
+    width: 99%;
+  }
+}
+@media screen and (max-width: 1115px) {
+  .results {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .resultsA {
-    margin-bottom: 20px;
+    width: 460px;
     margin-right: 0px;
+  }
+  .resultsA .indicatorData {
+    padding: 4% 0;
   }
 
   .resultsB {
+    width: 460px;
     margin-left: 0px;
   }
-
-  .countryName p {
-    border: black 2px solid;
+  .resultsB .indicatorData {
+    padding: 4% 0;
   }
 }
 @media screen and (max-width: 750px) {
@@ -460,19 +476,17 @@ header {
     margin-bottom: 20px;
   }
 }
-@media screen and (max-width: 600px) {
-  .flagA img,
-.flagB img {
-    height: clamp(170px, 90%, 277px);
+@media screen and (max-width: 500px) {
+  .wrapper {
     width: 100%;
   }
 
-  .resultsA .countryName p {
-    padding: 5px;
+  h1 {
+    font-size: 50px;
   }
-}
-@media screen and (max-width: 350px) {
-  .wrapper {
-    width: 100%;
+
+  .resultsA,
+.resultsB {
+    width: 310px;
   }
 }

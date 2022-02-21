@@ -1,19 +1,31 @@
-
-@media screen and (max-width: 1170px) {
-    
+@media screen and (max-width: 1333px) {
+    .wrapper {
+        width: 99%;
+    }
+}
+@media screen and (max-width: 1115px) {
+    .results {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .resultsA {
-        margin-bottom: 20px;
+        width: 460px;
         margin-right: 0px;
+        .indicatorData{
+            padding: 4% 0;
+        }
     }
     .resultsB {
+        width: 460px;
         margin-left: 0px;
+        .indicatorData{
+            padding: 4% 0;
+        }
     }
-    .countryName p {
-        border: black 2px solid;
-    }
-
-}
-
+        
+};
+    
 @media screen and (max-width: 750px) {
     .selectCountries {
         width: 100%;
@@ -27,21 +39,32 @@
     }
 }
 
-@media screen and (max-width: 600px) {
-    .flagA img,
-    .flagB img {
-        height: clamp(170px, 90%, 277px);
-        width: 100%;
+@media screen and (max-width: 500px) {
+    .wrapper {
+        width: 100%; 
+     }
+     h1 {
+         font-size: 50px;
+     }
+    .resultsA,
+    .resultsB {
+        width: 310px;
     }
-    .resultsA .countryName p {
-        padding: 5px;
-    }
+    
 }
+// @media screen and (max-width: 600px) {
+//     .flagA img,
+//     .flagB img {
+//         height: clamp(170px, 90%, 277px);
+//         width: 100%;
+//     }
+//     .resultsA .countryName p {
+//         padding: 5px;
+//     }
+// }
 
 
 
 @media screen and (max-width: 350px) {
-    .wrapper {
-        width: 100%; 
-     }
+  
 }

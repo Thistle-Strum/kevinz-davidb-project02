@@ -5,14 +5,14 @@
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
-    margin-top: 20px;
  }
 .resultsA {
     display: inline-block;
     background-color: transparent;
-
     text-align: center;
+    width: 40% ;
     margin-right: 10px;
+
     .countryName {
         background-color: white;
         font-size: 1.5rem;
@@ -28,6 +28,7 @@
     display: inline-block;
     background-color: transparent;
     text-align: center;
+    width: 40%;
     margin-left: 10px;
     .countryName {
         background-color: white;
@@ -36,18 +37,17 @@
         text-align: center;
         p {
             border: black 2px solid;
-           
             padding: 10px;
         }
     }
 }
+
 .flagA,
 .flagB {
-    // position: relative;
-    // top: 7px;
-    padding-bottom: 12px;
+    height: clamp(140px, 100%, 30%);
+    margin-bottom: 4%;
     img {
-        height: 291px;
+        height: 100%;
         width: 100%;
     }
 }
@@ -59,7 +59,7 @@
     background-color: transparent;
     padding: 4%;
     li:nth-child(odd) {
-        padding: 5px 0;
+        padding: 5px 3px;
         border: black solid 2px;
         border-radius: 20px;
         background-color: white;
@@ -82,7 +82,7 @@
     background-color: transparent;
     padding: 4%;
     li:nth-child(odd) {
-        padding: 5px 0;
+        padding: 5px 3px;
         border: black solid 2px;
         border-radius: 20px;
         background-color: white;
