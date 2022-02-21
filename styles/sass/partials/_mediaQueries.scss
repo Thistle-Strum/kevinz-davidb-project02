@@ -23,7 +23,11 @@
             padding: 4% 0;
         }
     }
-        
+    .flagA,
+    .flagB {    
+    height: 268px;
+    
+    }     
 };
     
 @media screen and (max-width: 750px) {
@@ -50,18 +54,13 @@
     .resultsB {
         width: 310px;
     }
+    .flagA,
+    .flagB {    
+    height: 184px;
+    
+    }  
     
 }
-// @media screen and (max-width: 600px) {
-//     .flagA img,
-//     .flagB img {
-//         height: clamp(170px, 90%, 277px);
-//         width: 100%;
-//     }
-//     .resultsA .countryName p {
-//         padding: 5px;
-//     }
-// }
 
 
 

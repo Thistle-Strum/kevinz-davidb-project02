@@ -463,6 +463,11 @@ header {
   .resultsB .indicatorData {
     padding: 4% 0;
   }
+
+  .flagA,
+.flagB {
+    height: 268px;
+  }
 }
 @media screen and (max-width: 750px) {
   .selectCountries {
@@ -488,5 +493,10 @@ header {
   .resultsA,
 .resultsB {
     width: 310px;
+  }
+
+  .flagA,
+.flagB {
+    height: 184px;
   }
 }
