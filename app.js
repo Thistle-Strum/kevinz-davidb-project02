@@ -129,15 +129,16 @@ wbApp.displayData = function(dataArray) {
         const values1 = document.createElement('li');
         // new variable to hold reformatted values
         let newFloat = '';
-
+        let formattedNumbers = result.value.toLocaleString();
+        
          // use a template literal to display property names and values separated by a colon        
         indicator1.textContent = `${result.name}`;
 
         // conditional used to reduce size of float values
-        if (result.value % 1 == 0 || typeof result.value == 'string') {
-            newFloat = result.value
+        if (formattedNumbers  % 1 == 0 || typeof formattedNumbers  == 'string') {
+            newFloat = formattedNumbers 
             } else {
-            newFloat = result.value.toFixed(2)
+            newFloat = formattedNumbers .toFixed(2)
             }
 
         values1.textContent = newFloat
@@ -174,15 +175,16 @@ wbApp.displayData = function(dataArray) {
         const indicator2 = document.createElement('li');  
         const values2 = document.createElement('li');
         let newFloat = '';
+        let formattedNumbers = result.value.toLocaleString();
     
-            if (result.value % 1 == 0 || typeof result.value == 'string') {
-                newFloat = result.value
+            if (formattedNumbers % 1 == 0 || typeof formattedNumbers == 'string') {
+                newFloat = formattedNumbers
                     } else {
-                        newFloat = result.value.toFixed(2)
+                        newFloat = formattedNumbers.toFixed(2)
                     }
        
         indicator2.textContent = `${result.name}`
-        values2.textContent = newFloat
+        values2.textContent = newFloat.toLocaleString()
       
         // listEl.textContent = `${result.name}: ${result.value}`
         resultsBIndicatorData.appendChild(indicator2);
