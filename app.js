@@ -129,16 +129,16 @@ wbApp.displayData = function(dataArray) {
         const values1 = document.createElement('li');
         // new variable to hold reformatted values
         let newFloat = '';
-        let formattedNumbers = result.value.toLocaleString();
+        result.value.toLocaleString();
         
          // use a template literal to display property names and values separated by a colon        
         indicator1.textContent = `${result.name}`;
 
         // conditional used to reduce size of float values
-        if (formattedNumbers  % 1 == 0 || typeof formattedNumbers  == 'string') {
-            newFloat = formattedNumbers 
+        if (result.value  % 1 == 0 || typeof result.value  == 'string') {
+            newFloat = result.value.toLocaleString();
             } else {
-            newFloat = formattedNumbers .toFixed(2)
+            newFloat = result.value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
             }
 
         values1.textContent = newFloat
@@ -175,16 +175,15 @@ wbApp.displayData = function(dataArray) {
         const indicator2 = document.createElement('li');  
         const values2 = document.createElement('li');
         let newFloat = '';
-        let formattedNumbers = result.value.toLocaleString();
-    
-            if (formattedNumbers % 1 == 0 || typeof formattedNumbers == 'string') {
-                newFloat = formattedNumbers
+       
+            if (result.value % 1 == 0 || typeof result.value == 'string') {
+                newFloat = result.value.toLocaleString();
                     } else {
-                        newFloat = formattedNumbers.toFixed(2)
+                        newFloat = result.value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
                     }
        
         indicator2.textContent = `${result.name}`
-        values2.textContent = newFloat.toLocaleString()
+        values2.textContent = newFloat
       
         // listEl.textContent = `${result.name}: ${result.value}`
         resultsBIndicatorData.appendChild(indicator2);
