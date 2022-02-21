@@ -107,12 +107,16 @@ wbApp.displayData = function(dataArray) {
     // get first nested array from api call
     const countryAResults = dataArray[0];
     const flagAUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[0]}`
+
+    const flagAAnchor = document.createElement('a');
+    flagAAnchor.href = `https://data.worldbank.org/country/${wbApp.selectedCountryNames[0]}?view=chart`
    
     const flagAElement = document.createElement('img');
     flagAElement.src = flagAUrl;
     flagAElement.alt = `The national flag of ${wbApp.selectedCountryNames[0]}`;
-    flagA.appendChild(flagAElement);
-
+  
+    flagA.appendChild(flagAAnchor);
+    flagAAnchor.append(flagAElement);
     // create a <p> to display country name in
     const resultAParagraphElement = document.createElement('p')
     // add first country to <p>
@@ -160,12 +164,16 @@ wbApp.displayData = function(dataArray) {
     const countryBName = wbApp.selectedCountryNames[1];
     const countryBResults = dataArray[1];
     const flagBUrl = `https://countryflagsapi.com/png/${wbApp.selectedCountries[1]}`
-  
+    
+    const flagBAnchor = document.createElement('a');
+    flagBAnchor.href = `https://data.worldbank.org/country/${wbApp.selectedCountryNames[1]}?view=chart`
+    
     const flagBElement = document.createElement('img');
     flagBElement.src = flagBUrl;
     flagBElement.alt = `The national flag of ${wbApp.selectedCountryNames[1]}`;
-    flagB.appendChild(flagBElement);
-
+    // flagB.appendChild(flagBElement);
+    flagB.appendChild(flagBAnchor);
+    flagBAnchor.append(flagBElement);
     const resultBParagraphElement = document.createElement('p')
     resultBParagraphElement.textContent = `${countryBName}`;
     // resultBParagraphElement.style.padding = '25px 0'
